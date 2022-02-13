@@ -42,47 +42,37 @@ function updateValue(type, dollertak, dollerinput, doller) {
   }
 }
 //Item one
+function calculatioinType(cal, dollertak, dollerType, dollerInput, type) {
+  let inputValue = Number(dollerInput.value);
+
+  if (cal === true) {
+    inputValue = inputValue + 1;
+    dollerInput.value = inputValue;
+  } else {
+    inputValue = inputValue - 1;
+    if (inputValue >= 0) {
+      dollerInput.value = inputValue;
+    }
+  }
+
+  let dollerinput = Number(dollerType.innerText);
+  updateValue(type, dollertak, dollerinput, dollerType);
+}
 
 decrementbtn.addEventListener("click", () => {
-  let inputValue = input.value - 1;
-  if (inputValue >= 0) {
-    input.value = inputValue;
-  }
-  let dollertak = 200;
-  let dollerinput = Number(doller.innerText);
-  updateValue(false, dollertak, dollerinput, doller);
+  calculatioinType(false, 200, doller, input, false);
 });
 incrementBtn.addEventListener("click", () => {
-  let inputValue = Number(input.value);
-  inputValue = inputValue + 1;
-  input.value = inputValue;
-
-  let dollertak = 200;
-  let dollerinput = Number(doller.innerText);
-  updateValue(true, dollertak, dollerinput, doller);
+  calculatioinType(true, 200, doller, input, true);
 });
 
 // item two
 
 decrementbtn1.addEventListener("click", () => {
-  let inputValue = input1.value - 1;
-  if (inputValue >= 0) {
-    input1.value = inputValue;
-  }
-
-  let dollertak = 100;
-  let dollerinput = Number(doller1.innerText);
-
-  updateValue(false, dollertak, dollerinput, doller1);
+  calculatioinType(false, 100, doller1, input1, false);
 });
 incrementbtn1.addEventListener("click", () => {
-  let inputValue = Number(input1.value);
-  inputValue = inputValue + 1;
-  input1.value = inputValue;
-
-  dollertak = 100;
-  let dollerinput = Number(doller1.innerText);
-  updateValue(true, dollertak, dollerinput, doller1);
+  calculatioinType(true, 100, doller1, input1, true);
 });
 
 let removeClass = document.getElementsByClassName("remove-item");
