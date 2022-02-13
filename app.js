@@ -13,54 +13,50 @@ const incrementbtn1 = document.getElementById("incrementbtn1");
 
 let subTotalDollerAllItem = document.getElementById("subTotalDollerAllItem");
 const totalDollerAllItem = document.getElementById("totalDollerAllItem");
+
 const vat = document.getElementById("vat");
-
-decrementbtn.addEventListener("click", () => {
-  let inputValue = input.value - 1;
-  if (inputValue >= 0) {
-    input.value = inputValue;
-  }
-
+function updateValue(type) {
   let dollertak = 200;
+  let totalDoller;
   let dollerinput = Number(doller.innerText);
 
-  let totalDoller = dollerinput - dollertak;
+  if (type === true) totalDoller = dollerinput + dollertak;
+  else totalDoller = dollerinput - dollertak;
+
   if (totalDoller >= 0) {
     doller.innerText = totalDoller;
 
     // SubTotal update
     let inTotaldoller1InnerText = Number(subTotalDollerAllItem.innerText);
-    subTotalDollerAllItem.innerText = inTotaldoller1InnerText - dollertak;
+    if (type === true)
+      subTotalDollerAllItem.innerText = inTotaldoller1InnerText + dollertak;
+    else subTotalDollerAllItem.innerText = inTotaldoller1InnerText - dollertak;
+
     // vat update
     let AllItemVat = Number(vat.innerText);
-    vat.innerText = AllItemVat - 2;
+    if (type === true) vat.innerText = AllItemVat + 2;
+    else vat.innerText = AllItemVat - 2;
 
     // Total Doller Update vat + Subtotal
     const num = Number(subTotalDollerAllItem.innerText);
     const num2 = Number(vat.innerText);
     totalDollerAllItem.innerText = num + num2;
   }
+}
+//Item one
+
+decrementbtn.addEventListener("click", () => {
+  let inputValue = input.value - 1;
+  if (inputValue >= 0) {
+    input.value = inputValue;
+  }
+  updateValue(false);
 });
 incrementBtn.addEventListener("click", () => {
   let inputValue = Number(input.value);
   inputValue = inputValue + 1;
   input.value = inputValue;
-
-  dollertak = 200;
-  let totalDoller = dollertak * inputValue;
-  doller.innerText = totalDoller;
-
-  // SubTotal update
-  let inTotaldoller1InnerText = Number(subTotalDollerAllItem.innerText);
-  subTotalDollerAllItem.innerText = inTotaldoller1InnerText + dollertak;
-  // vat update
-  let AllItemVat = Number(vat.innerText);
-  vat.innerText = AllItemVat + 2;
-
-  // Total Doller Update vat + Subtotal
-  const num = Number(subTotalDollerAllItem.innerText);
-  const num2 = Number(vat.innerText);
-  totalDollerAllItem.innerText = num + num2;
+  updateValue(true);
 });
 
 // item two
