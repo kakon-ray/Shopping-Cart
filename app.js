@@ -21,7 +21,6 @@ decrementbtn.addEventListener("click", () => {
   let dollerinput = Number(doller.innerText);
 
   let totalDoller = dollerinput - dollertak;
-  console.log(totalDoller);
   if (totalDoller >= dollertak) {
     doller.innerText = totalDoller;
   }
@@ -33,6 +32,31 @@ incrementBtn.addEventListener("click", () => {
 
   dollertak = 200;
   let totalDoller = dollertak * inputValue;
-  console.log(totalDoller);
   doller.innerText = totalDoller;
+});
+
+// item two
+
+decrementbtn1.addEventListener("click", () => {
+  let inputValue = input1.value - 1;
+  if (inputValue > 0) {
+    input1.value = inputValue;
+  }
+
+  let dollertak = 200;
+  let dollerinput = Number(doller1.innerText);
+
+  let totalDoller = dollerinput - dollertak;
+  if (totalDoller >= dollertak) {
+    doller1.innerText = totalDoller;
+  }
+});
+incrementbtn1.addEventListener("click", () => {
+  let inputValue = Number(input1.value);
+  inputValue = inputValue + 1;
+  input1.value = inputValue;
+
+  dollertak = 200;
+  let totalDoller = dollertak * inputValue;
+  doller1.innerText = totalDoller;
 });
