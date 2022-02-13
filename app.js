@@ -84,3 +84,11 @@ incrementbtn1.addEventListener("click", () => {
   let dollerinput = Number(doller1.innerText);
   updateValue(true, dollertak, dollerinput, doller1);
 });
+
+let removeClass = document.getElementsByClassName("remove-item");
+
+for (var i = 0; i < removeClass.length; i++) {
+  removeClass[i].addEventListener("click", function () {
+    this.parentNode.parentNode.parentNode.remove();
+  });
+}
